@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     let startTime = 0
-    // Arrays to store all events and tasks
+    // event/task array
     let allEvents;
     let allTasks;
-    const BACKEND_URL = "http://127.0.0.1:5000";  // URL for the Flask backend
-    // fetching functions
+    const BACKEND_URL = "http://127.0.0.1:5000"; 
+    // fetch
     async function fetchAPIData(endpoint) {
         try {
             const response = await fetch(endpoint);
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return null;
         }
     }
-    // Function to fetch all events and tasks once and store them
+    // all events and tasks 
     async function initializeGameData() {
         const eventsData = await fetchAPIData(`${BACKEND_URL}/events`);
         const tasksData = await fetchAPIData(`${BACKEND_URL}/tasks`);
@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
         allTasks = tasksData
     }
 
-    // Function to get a random event
+    // get a random event
     function getRandomEvent() {
         if (allEvents.length === 0) return null;
         const randomIndex = Math.floor(Math.random() * allEvents.length);
         return allEvents[randomIndex];
     }
 
-    // Function to get a random task
+    // get a random task
     function getRandomTask() {
         if (allTasks.length === 0) return null;
         const randomIndex = Math.floor(Math.random() * allTasks.length);
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             antidotesElement.textContent = `Antidotes: ${gameState.antidotes}/${gameState.totalAntidotesNeeded}`;
         }
 
-        // Update visited countries
+        // Update countries
         if (visitedElement) {
             const visitedCountries = gameState.visitedCountries.length
                 ? gameState.visitedCountries.join(', ')
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCockpitUI()
     });
 
-    // Function to display the leaderboard
+    // display leaderboard
     function showLeaderboard(data) {
         const leaderboardSection = document.getElementById('leaderboard-section');
         const leaderboardBody = document.getElementById('leaderboard-body');
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         leaderboardSection.style.display = 'block';
     }
 
-    // Fetch leaderboard data and display it
+    // Fetch leaderboard data
     document.getElementById('leaderboardBtn').addEventListener('click', async () => {
         try {
             const response = await fetch('http://127.0.0.1:5000/leaderboard');
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close the leaderboard
+    // Close leaderboard
     document.getElementById('closeLeaderboardBtn').addEventListener('click', () => {
         document.getElementById('leaderboard-section').style.display = 'none';
         menuSection.style.display = 'block';
@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Open Map
     mapBtn.addEventListener('click', () => {
         cockpitSection.style.display = 'none';
         mapSection.style.display = 'block';
@@ -209,9 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         populateCountryList();
     });
 
-    // Back to Cockpit
     backToCockpitBtn.addEventListener('click', () => {
-
         mapSection.style.display = 'none';
         cockpitSection.style.display = 'block';
         const dotElements = document.querySelectorAll('.dot');
@@ -223,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    // Back to Map
     backToMapBtn.addEventListener('click', () => {
         document.body.style.backgroundImage = "url('./picsforpeli/map_bg.png')";
         countryEventSection.style.display = 'none';
@@ -235,11 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
         populateCountryList();
     });
 
-    // Function to populate the country grid dynamically
+    // country grid
     async function populateCountryList() {
         const countryGrid = document.getElementById('country-grid');
         countryGrid.innerHTML = '';
-
         if (gameState.visitedCountries.length >= 20) {
             checkWinCondition();
             checkGameOver();
@@ -249,12 +244,10 @@ document.addEventListener('DOMContentLoaded', () => {
             checkGameOver();
             checkHealthStatus();
         }
-        // Loop through the countries in gameState
         gameState.countries.forEach(country => {
             const countryButton = document.createElement('div');
             countryButton.textContent = country;
             countryButton.className = 'country-btn';
-
 
             if (gameState.visitedCountries.includes(country)) {
                 countryButton.classList.add('visited');
@@ -263,9 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
 
                 countryButton.addEventListener('click', () => {
-                    openCountryEvent(country); // Your function to handle the event
-
-                    // Hide all the dots on the map
+                    openCountryEvent(country); 
                     const dotElements = document.querySelectorAll('.dot');
                     dotElements.forEach(dot => {
                         dot.style.display = 'none';
@@ -273,18 +264,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-
             countryGrid.appendChild(countryButton);
         });
     }
-
     function updateHealthBar() {
-        // Check if the health-bar container exists
+        // Check if health-bar exists
         let healthBarContainer = document.getElementById('health-bar');
         if (!healthBarContainer) {
             console.warn("Health bar container not found! Creating a new one.");
-
-            // Create the health-bar container
+            // Create health-bar 
             healthBarContainer = document.createElement('div');
             healthBarContainer.id = 'health-bar';
             healthBarContainer.style.width = '100%';
@@ -293,8 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             healthBarContainer.style.height = '25px';
             healthBarContainer.style.boxShadow = 'inset 0 4px 6px rgba(0, 0, 0, 0.2)';
             healthBarContainer.style.marginTop = '10px';
-
-            // Append the container to its parent
+            // Append
             const healthDisplay = document.getElementById('health-display');
             if (!healthDisplay) {
                 console.error("Health display container not found! Cannot create health bar.");
@@ -302,26 +289,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             healthDisplay.appendChild(healthBarContainer);
         }
-
-        // Check if the health-progress bar exists
+        // Check if health progress bar exists
         let healthProgress = document.getElementById('health-progress');
         if (!healthProgress) {
             console.warn("Health progress bar element not found! Creating a new one.");
-
-            // Create the health-progress element
+            // Create health progress bar
             healthProgress = document.createElement('div');
             healthProgress.id = 'health-progress';
             healthProgress.style.backgroundColor = '#ff9800';
             healthProgress.style.height = '100%';
             healthProgress.style.borderRadius = '8px';
-            healthProgress.style.width = '100%'; // Default full width
-            healthProgress.style.transition = 'width 0.3s ease'; // Smooth transition
-
-            // Append it to the health-bar container
+            healthProgress.style.width = '100%';
+            healthProgress.style.transition = 'width 0.3s ease';
+            // Append
             healthBarContainer.appendChild(healthProgress);
         }
-
-        // Update the width based on the current health percentage
         gameState.health = Math.min(gameState.health, 10)
         const healthPercentage = (gameState.health / 10) * 100; // Assuming max health is 10
         healthProgress.style.width = `${healthPercentage}%`;
@@ -344,16 +326,14 @@ document.addEventListener('DOMContentLoaded', () => {
             gameState.visitedCountries.push(country);
         }
 
-        // Ensure events and tasks are balanced
         const countryData = gameState.countryData[country] || { eventsUsed: 0, tasksUsed: 0 };
-
         const usePotionBtn = document.getElementById('usePotionBtn');
         const continueBtn = document.getElementById('continueBtn');
 
         usePotionBtn.style.display = 'inline-block';
         continueBtn.style.display = 'none';
 
-        // Handle the next step (event or task)
+        // Handle event/task
         function handleNextStep() {
             const totalActions = countryData.eventsUsed + countryData.tasksUsed;
 
@@ -392,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             allTasks = allTasks.filter(e => e.task_id !== task.task_id);
                         } else {
                             eventDescription.textContent = 'No tasks available right now. Continue your journey!';
-                            // updateHealth(-1);
+                            // update
                             countryData.tasksUsed += 1;
                         }
                     } else {
@@ -404,24 +384,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             gameState.countryData[country] = countryData;
-
-            // checkWinCondition();
-            // checkGameOver();
-            // checkHealthStatus();
-
             if (totalActions <= 1) {
                 continueBtn.style.display = 'inline-block';
             }
         }
 
-        // Attach events to the buttons
         continueBtn.addEventListener('click', () => {
             clearChoices();
             continueBtn.style.display = 'none';
             handleNextStep();
         });
 
-        // Start with the initial action description
         eventDescription.textContent = 'You land the plane safely. Time to see what happens!';
         continueBtn.style.display = 'inline-block';
     }
@@ -440,17 +413,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // handel outcome of events
+    // outcome
     function handleEventOutcome(event) {
         if (!event || !event.choices || Object.keys(event.choices).length === 0) return;
-
         clearChoices();
-
         let choicesArray = JSON.parse(event.choices);
         const options = JSON.parse(event.outcomes);
-
         const choiceContainer = document.getElementById('choice-container');
-
         choicesArray.forEach(choice => {
             const choiceButton = document.createElement('button');
             choiceButton.textContent = choice.text;
@@ -458,29 +427,22 @@ document.addEventListener('DOMContentLoaded', () => {
             choiceButton.addEventListener('click', () => {
                 const outcomeText = options[choice.option] || 'Outcome not found';
                 eventDescription.textContent = outcomeText;
-
                 health_impact = JSON.parse(event.health_impact);
                 const healthImpact = health_impact[choice.option] || 0;
-
                 updateHealth(healthImpact);
                 updateHealthDisplay()
-
                 clearChoices();
             });
             choiceContainer.appendChild(choiceButton);
         });
     }
-    // handel outcome of tasks
+    // outcome
     function handleTaskOutcome(task) {
         if (!task || !task.choices || Object.keys(task.choices).length === 0) return;
-
         clearChoices();
-
         let choicesArray = JSON.parse(task.choices);
         const options = JSON.parse(task.outcomes);
-
         const choiceContainer = document.getElementById('choice-container');
-
         choicesArray.forEach(choice => {
             const choiceButton = document.createElement('button');
             choiceButton.textContent = choice.text;
@@ -488,7 +450,6 @@ document.addEventListener('DOMContentLoaded', () => {
             choiceButton.addEventListener('click', () => {
                 const outcomeText = options[choice.option] || 'Outcome not found';
                 eventDescription.textContent = outcomeText;
-
                 if (outcomeText.includes("antidote")) {
                     if (outcomeText.includes("refuses to give you the antidote") || outcomeText.includes("You missed the antidote")) {
                         updateHealth(-1);
@@ -510,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
             choiceContainer.appendChild(choiceButton);
         });
     }
-    // to clear buttons
+    // clear buttons
     function clearChoices() {
         const choiceContainer = document.getElementById('choice-container');
         choiceContainer.innerHTML = '';
@@ -521,28 +482,25 @@ document.addEventListener('DOMContentLoaded', () => {
             endGame();
         }
     }
-    // Function to update the player's health
+    // update health
     function updateHealth(healthChange) {
         gameState.health += healthChange;
         gameState.health = Math.min(gameState.health, 10)
-
         if (gameState.health <= 0) {
             endGame();
         }
-
         updateHealthDisplay();
         updateHealthBar();
     }
 
-    // Function to update the health display on the screen
+    // update health display 
     function updateHealthDisplay() {
         const healthDisplay = document.getElementById('health-label');
-
         if (healthDisplay) {
             healthDisplay.textContent = `Health: ${gameState.health}`;
         }
     }
-    // Function to reset the game state
+    // reset game
     function restartGame() {
         document.body.style.backgroundImage = "url('./picsforpeli/menu_bg.png')";
         gameState = {
@@ -558,7 +516,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gameOverScreen) {
             gameOverScreen.remove();
         }
-
         mapSection.style.display = 'none';
         countryEventSection.style.display = 'none';
         cockpitSection.style.display = 'none';
@@ -570,31 +527,26 @@ document.addEventListener('DOMContentLoaded', () => {
             endGame();
         }
     }
-    // end of the game and display it 
     function endGame() {
         document.body.style.backgroundImage = "url('./picsforpeli/lost_bg.png')";
         mapSection.style.display = 'none';
         countryEventSection.style.display = 'none';
         cockpitSection.style.display = 'none';
-
         const gameOverScreen = document.createElement('div');
         gameOverScreen.classList.add('game-over-screen');
-
         const restartButton = document.createElement('button');
         restartButton.textContent = 'Restart';
         restartButton.onclick = restartGame;
-
         gameOverScreen.appendChild(restartButton);
-
         document.body.appendChild(gameOverScreen);
     }
-    // check if the player win 
+    // if player win 
     function checkWinCondition() {
         if (gameState.visitedCountries.length === 20 && gameState.health > 0) {
             displayWinningScreen();
         }
     }
-    // display the winnig screen
+    // the winnign screen
     async function displayWinningScreen() {
         document.body.style.backgroundImage = "url('./picsforpeli/won_bg.png')";
         mapSection.style.display = 'none';
@@ -605,19 +557,14 @@ document.addEventListener('DOMContentLoaded', () => {
         winningScreen.innerHTML = `
             <button id="go-to-leaderboard-btn">Go to Leaderboard</button>
         `;
-
         document.body.appendChild(winningScreen);
-
         const leaderboardButton = document.getElementById('go-to-leaderboard-btn');
-
         leaderboardButton.addEventListener('click', async () => {
             await savePlayerDataToBackend();
-
             winningScreen.style.display = 'none';
             try {
                 const response = await fetch('http://127.0.0.1:5000/leaderboard');
                 const data = await response.json();
-
                 if (data.leaderboard) {
                     showLeaderboard(data);
                 } else {
@@ -628,14 +575,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    // save data of player to db
+    // save data
     function savePlayerDataToBackend() {
         const playerData = {
             name: gameState.playerName,
             health: gameState.health,
             time: Math.floor((Date.now() - startTime) / 1000)
         };
-
         return fetch(`${BACKEND_URL}/update_leaderboard`, {
             method: 'POST',
             headers: {
@@ -658,31 +604,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const countryCoordinates = {
-        "FI": { x: 520, y: 100 }, // Finland
-        "SE": { x: 460, y: 150 }, // Sweden
-        "NO": { x: 400, y: 140 }, // Norway
-        "EE": { x: 520, y: 200 }, // Estonia
-        "LV": { x: 500, y: 230 }, // Latvia
-        "LT": { x: 480, y: 260 }, // Lithuania
-        "PL": { x: 460, y: 330 }, // Poland
-        "SK": { x: 420, y: 370 }, // Slovakia
-        "HU": { x: 440, y: 390 }, // Hungary
-        "AT": { x: 400, y: 350 }, // Austria
-        "DE": { x: 360, y: 300 }, // Germany
-        "CH": { x: 320, y: 350 }, // Switzerland
-        "CZ": { x: 390, y: 320 }, // Czechia
-        "BE": { x: 300, y: 300 }, // Belgium
-        "NL": { x: 280, y: 290 }, // Netherlands
-        "FR": { x: 550, y: 750 }, // France
-        "DK": { x: 360, y: 200 }, // Denmark
-        "GB": { x: 200, y: 250 }, // Great Britain
-        "IE": { x: 150, y: 250 }, // Ireland
-        "IS": { x: 100, y: 100 }  // Iceland
+        "FI": { x: 520, y: 100 }, 
+        "SE": { x: 460, y: 150 }, 
+        "NO": { x: 400, y: 140 }, 
+        "EE": { x: 520, y: 200 }, 
+        "LV": { x: 500, y: 230 }, 
+        "LT": { x: 480, y: 260 }, 
+        "PL": { x: 460, y: 330 }, 
+        "SK": { x: 420, y: 370 }, 
+        "HU": { x: 440, y: 390 },
+        "AT": { x: 400, y: 350 }, 
+        "DE": { x: 360, y: 300 }, 
+        "CH": { x: 320, y: 350 }, 
+        "CZ": { x: 390, y: 320 }, 
+        "BE": { x: 300, y: 300 }, 
+        "NL": { x: 280, y: 290 }, 
+        "FR": { x: 550, y: 750 }, 
+        "DK": { x: 360, y: 200 }, 
+        "GB": { x: 200, y: 250 }, 
+        "IE": { x: 150, y: 250 }, 
+        "IS": { x: 100, y: 100 }  
     };
-    // draw dot on the country has visted
+    // country visted
     function draw_country(country) {
         const coords = countryCoordinates[country];
-
         if (coords) {
             const dot = document.createElement('div');
             dot.classList.add('dot');
