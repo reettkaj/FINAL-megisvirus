@@ -1,6 +1,6 @@
 import mysql.connector
 import json
-# Database connection details
+#database connection details
 db_config = {
     "host": "localhost",
     "user": "root",
@@ -8,7 +8,7 @@ db_config = {
     "autocommit": True
 }
 
-# Events and tasks data
+#events and tasks data
 events = [
     {
         "id": 1,
@@ -288,7 +288,7 @@ tasks = [
     }
 ]
 
-# Connect to MySQL
+#mysql connection
 try:
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
@@ -297,7 +297,7 @@ except mysql.connector.Error as err:
     print(f"Error: {err}")
     exit(1)
 
-# Recreate the `miafe` database
+# Recreate the `miafe` database (from the one made by mia)
 try:
     cursor.execute("DROP DATABASE IF EXISTS miafe;")
     cursor.execute("CREATE DATABASE miafe;")
