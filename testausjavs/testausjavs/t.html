@@ -11,7 +11,6 @@
 <div id="upon_body">
 
     <body>
-        <!-- Menu Section -->
         <div id="menu-section">
             <button id="startBtn" class="btn">Start Game</button>
             <button id="leaderboardBtn" class="btn">Leaderboard</button>
@@ -36,8 +35,6 @@
                 </table>
             </div>
         </div>
-
-        <!-- Name Entry Section -->
         <div id="name-entry-section" style="display: none;">
             <div class="name-entry-container">
                 <label for="playerName">Enter your name:</label>
@@ -45,7 +42,6 @@
                 <button id="submitNameBtn">Submit</button>
             </div>
         </div>
-        <!-- story and tutorial stuff on screen)  -->
         <div id="story" style="display: none;" class="story-container">
             <h2>Game Start</h2>
             <p>
@@ -59,7 +55,6 @@
             <hr class="separator">
             <button id="storyBtn" class="continue-btn">Continue</button>
         </div>
-        <!-- Cockpit Section -->
         <div id="cockpit-section" class="cockpit-container" style="display: none;">
             <h2 class="cockpit-title">Welcome to the Cockpit</h2>
             <p id="health">Health: 10</p>
@@ -69,19 +64,12 @@
                 <button id="mapBtn" class="btn cockpit-btn">Open Map</button>
             </div>
         </div>
-
-        <!-- Map Section -->
         <div id="map-section" class="map-container" style="display: none;">
             <h3 class="map-title">Select a Country</h3>
             <div id="country-grid" class="country-grid">
-                <!-- Dynamically populated country buttons will appear here -->
             </div>
             <button id="backToCockpitBtn" class="btn map-back-btn">Back to Cockpit</button>
         </div>
-
-
-
-        <!-- Country Event/Task Section -->
         <div id="country-event-section" class="event-task-section" style="display: none;">
             <div id="health-display" class="health-display">
                 <p id="health-label">Health:</p>
@@ -92,18 +80,16 @@
             <h3 id="event-title" class="event-title">Country Event/Task</h3>
             <p id="event-description" class="event-description">Description goes here.</p>
             <div id="choice-container" class="choice-container">
-                <!-- Choice buttons will be appended here -->
             </div>
             <div id="button-container" class="button-container">
                 <button id="backToMapBtn" class="back-btn">Back to Map</button>
                 <button id="usePotionBtn" class="Potion-btn" style="display: inline-block;">Use Potion:<span
                         id="antidote-count">0</span></button>
                 <button id="continueBtn" class="action-btn" style="display: none;">
-                    <i class="fas fa-arrow-right"></i> <!-- Right arrow icon -->
+                    <i class="fas fa-arrow-right"></i> 
                 </button>
             </div>
         </div>
-
         <script src="t.js"></script>
     </body>
 </div>
