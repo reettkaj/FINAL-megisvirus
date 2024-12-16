@@ -7,9 +7,9 @@
 body {
   font-family: Arial, sans-serif;
   background-image: url('./picsforpeli/menu_bg.png');
-  /* Path to your background image */
+  /*  background image */
   background-size: contain;
-  /* Use 'contain' to ensure the whole image is visible */
+  /* ensure the whole image is visible */
   background-repeat: no-repeat;
   background-position: center center;
   display: flex;
@@ -18,7 +18,6 @@ body {
   height: 100vh;
   flex-direction: column;
   overflow: hidden;
-  /* Hide any overflow */
 }
 
 
@@ -33,12 +32,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Centers the content */
   padding: 20px;
   background: rgba(0, 0, 0, 0.5);
-  /* Adds a semi-transparent dark background */
+
   border-radius: 10px;
-  /* Rounds the corners */
   text-align: center;
 }
 
@@ -85,35 +82,27 @@ button:active {
 }
 
 
-/* Fix the leaderboard container to ensure everything stays inside */
 .leaderboard-container {
   margin: 20px auto;
   padding: 20px;
   width: 90%;
-  /* Adjust to ensure it's responsive */
   max-width: 600px;
-  /* Set a max width */
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
-  /* Enable scrolling if content overflows */
 }
 
-/* Fix the table to stay within its container */
 .leaderboard-table {
   width: 100%;
-  /* Make the table take the full width of the container */
   border-collapse: collapse;
   table-layout: fixed;
-  /* Prevent cells from overflowing */
 }
 
 .leaderboard-table th,
 .leaderboard-table td {
   word-wrap: break-word;
-  /* Ensure text wraps within cells */
   padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
@@ -138,7 +127,6 @@ button:active {
   color: #333;
 }
 
-/* Styling the container */
 .name-entry-container {
   margin: 20px auto;
   padding: 20px;
@@ -151,7 +139,6 @@ button:active {
   text-align: center;
 }
 
-/* Styling the label */
 .name-entry-container label {
   display: block;
   font-size: 16px;
@@ -159,7 +146,6 @@ button:active {
   margin-bottom: 10px;
 }
 
-/* Styling the input */
 .name-entry-container input {
   width: 90%;
   padding: 10px;
@@ -176,7 +162,6 @@ button:active {
   border-color: #007bff;
 }
 
-/* Styling the button */
 .name-entry-container button {
   padding: 10px 20px;
   font-size: 16px;
@@ -192,14 +177,12 @@ button:active {
   background-color: #0056b3;
 }
 
-/* Add some responsiveness */
 @media (max-width: 600px) {
   .name-entry-container {
     width: 90%;
   }
 }
 
-/* Story container */
 .story-container {
   margin: 50px auto;
   padding: 20px;
@@ -212,14 +195,12 @@ button:active {
   font-family: 'Arial', sans-serif;
 }
 
-/* Title styling */
 .story-container h2 {
   font-size: 28px;
   color: #333;
   margin-bottom: 20px;
 }
 
-/* Paragraph styling */
 .story-container p {
   font-size: 16px;
   line-height: 1.6;
@@ -233,7 +214,6 @@ button:active {
   color: #2a7ae4;
 }
 
-/* Separator styling */
 .story-container .separator {
   border: 0;
   height: 1px;
@@ -242,7 +222,6 @@ button:active {
   width: 80%;
 }
 
-/* Button styling */
 .continue-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -258,7 +237,6 @@ button:active {
   background-color: #0056b3;
 }
 
-/* Add some responsiveness */
 @media (max-width: 600px) {
   .story-container {
     width: 90%;
@@ -274,17 +252,13 @@ button:active {
   }
 }
 
-/* Cockpit container styling */
 .cockpit-container {
   margin: auto;
   padding: 30px;
   max-width: 500px;
-  /* background-color: #1e293b; */
-  /* Dark navy background */
   text-align: center;
   font-family: 'Arial', sans-serif;
   color: #ffffff;
-  /* White text */
 }
 
 p {
@@ -293,20 +267,16 @@ p {
   color: white;
 }
 
-/* Title styling */
 .cockpit-title {
   font-size: 28px;
   margin-bottom: 20px;
   color: #00d4ff;
-  /* Bright cyan for the title */
 }
 
-/* Button container */
 .cockpit-actions {
   margin-top: 20px;
 }
 
-/* Button styling */
 .cockpit-btn {
   padding: 12px 25px;
   font-size: 18px;
@@ -330,7 +300,6 @@ p {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Add responsiveness */
 @media (max-width: 600px) {
 
   .cockpit-container {
@@ -348,45 +317,36 @@ p {
   }
 }
 
-/* Map Section Container */
 .map-container {
   padding: 30px;
   max-width: 900px;
   margin: auto;
-  /* Light blue resembling a map */
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
   font-family: 'Arial', sans-serif;
 }
 
-/* Title Styling */
 .map-title {
   font-size: 24px;
   color: #0288d1;
   margin-bottom: 20px;
 }
 
-/* Grid Layout for Countries */
 .country-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* margin: 570px auto auto 872px; */
-  /* 5 columns per row */
   gap: 15px;
-  /* Space between buttons */
   padding: 20px;
   justify-content: center;
 }
 
-/* Country Buttons */
 .country-btn {
   padding: 15px;
   font-size: 14px;
   text-align: center;
   color: #fff;
   background: linear-gradient(135deg, #00796b, #004d40);
-  /* Teal gradient */
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -396,7 +356,6 @@ p {
 
 .country-btn:hover {
   transform: scale(1.05);
-  /* Slight zoom on hover */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -405,7 +364,6 @@ p {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Back Button */
 .map-back-btn {
   margin-top: 20px auto 70px;
   padding: 12px 25px;
@@ -413,7 +371,6 @@ p {
   font-weight: bold;
   color: #fff;
   background: #0288d1;
-  /* Light blue for back button */
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -422,7 +379,6 @@ p {
 
 .map-back-btn:hover {
   background: #0277bd;
-  /* Darker blue */
   transform: translateY(-2px);
 }
 
@@ -431,7 +387,6 @@ p {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .map-container {
     width: 90%;
@@ -440,7 +395,6 @@ p {
 
   .country-grid {
     grid-template-columns: repeat(3, 1fr);
-    /* 3 columns per row on smaller screens */
     gap: 10px;
   }
 
@@ -455,12 +409,10 @@ p {
   }
 }
 
-/* Styling for country buttons */
 .country-btn {
   padding: 10px 15px;
   margin: 5px;
   background-color: #4CAF50;
-  /* Default button color */
   color: white;
   border: none;
   border-radius: 5px;
@@ -470,22 +422,15 @@ p {
   display: inline-block;
 }
 
-/* Styling for visited countries */
 .country-btn.visited {
   text-decoration: line-through;
-  /* Adds a line through the name */
   background-color: #ccc;
-  /* Change the color of the button for visited countries */
   color: #333;
-  /* Optional: change text color */
 }
 
-/* Styling for when the country is disabled */
 .country-btn:disabled {
   cursor: not-allowed;
-  /* Make the cursor look inactive */
   opacity: 0.6;
-  /* Make the button look faded */
 }
 
 .continue-btn {
@@ -506,83 +451,54 @@ p {
 
 .event-title {
   font-size: 28px;
-  /* Increased font size for better readability */
   font-weight: bold;
   color: #FFFFFF;
-  /* White color for high contrast */
   margin-bottom: 15px;
-  /* Reduced margin for a tighter layout */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  /* Added text shadow for better visibility */
 }
 
 .event-description {
   font-size: 18px;
-  /* Slightly increased font size */
   color: #FFFFFF !important;
-  /* White color for high contrast */
   line-height: 1.8;
-  /* Increased line height for better readability */
   margin-bottom: 15px;
-  /* Reduced margin for a tighter layout */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  /* Added text shadow for better visibility */
 }
 
-/* Container for the choice buttons */
 .choice-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  /* Adjusted spacing between buttons */
   margin-bottom: 15px;
-  /* Adjusted margin below the choices */
 }
 
-/* Choice button styling */
 .choice-btn {
   padding: 15px;
-  /* Increased padding for better touch area */
   font-size: 18px;
-  /* Increased font size for better readability */
   background-color: #4CAF50;
-  /* Green for positive actions */
   color: #FFFFFF;
-  /* White for high contrast */
   border: none;
   border-radius: 10px;
-  /* Softer corners */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  /* Added transition for a smoother effect */
   margin: 5px 0;
-  /* Vertical margin between buttons */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  /* Added text shadow for better visibility */
 }
 
 .choice-btn:hover {
   background-color: #388E3C;
-  /* Darker green on hover */
   transform: scale(1.05);
-  /* Slight scale effect on hover */
 }
 
 
-/* Country Event Section Styling */
 .event-task-section {
   padding: 25px;
-  /* Increased padding for more space */
   border-radius: 15px;
-  /* Softer corners */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  /* Slightly stronger shadow for depth */
   font-family: 'Arial', sans-serif;
   margin: 25px;
-  /* Increased margin for more separation */
 }
 
-/* Health Display Styling */
 .health-display {
   margin-top: 20px;
   padding: 10px;
@@ -617,7 +533,6 @@ p {
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* Add some padding and rounded edges to the back button */
 #backToMapBtn {
   padding: 12px 20px;
   font-size: 16px;
@@ -647,7 +562,6 @@ p {
   background-color: #006b8f;
 }
 
-/* Fade In Effect */
 .game-over-screen {
   animation: fadeIn 0.5s ease-in;
 }
@@ -662,10 +576,8 @@ p {
   }
 }
 
-
 .antidote-btn {
   background-color: #4CAF50;
-  /* Green for use button */
   color: white;
   padding: 10px 20px;
   margin: 10px;
@@ -677,7 +589,6 @@ p {
 
 .antidote-btn:hover {
   background-color: #45a049;
-  /* Darker green on hover */
 }
 
 #antidote-buttons-container {
@@ -700,9 +611,7 @@ p {
 
 #go-to-leaderboard-btn:hover {
   background-color: #45a049;
-  /* Darker green */
   transform: scale(1.05);
-  /* Slight scale-up effect */
 }
 
 #go-to-leaderboard-btn:active {
@@ -738,25 +647,18 @@ p {
 
 #continueBtn:hover {
   background-color: #45a049;
-  /* Darker green on hover */
   transform: scale(1.05);
-  /* Slightly enlarge the button on hover */
 }
 
 #continueBtn i {
   margin-right: 10px;
-  /* Space between icon and text */
 }
 
 .button-container {
   display: flex;
-  /* Flexbox layout */
   justify-content: space-between;
-  /* Distribute buttons evenly with space between */
   align-items: center;
-  /* Align buttons vertically */
   gap: 10px;
-  /* Space between the buttons */
 }
 
 .action-btn,
@@ -787,14 +689,11 @@ p {
 .action-btn:hover,
 .back-btn:hover {
   background-color: #45a049;
-  /* Darker green on hover */
   transform: scale(1.05);
-  /* Slightly enlarge the button on hover */
 }
 
 .action-btn i {
   margin-right: 10px;
-  /* Space between icon and text */
 }
 
 
