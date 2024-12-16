@@ -14,3 +14,6 @@ Olet sairastunut vakavasti Megis-virukseen! Sinun täytyy etsiä vasta-aineet yh
 Joissakin maissa saat vasta-aineen suorittamalla tehtäviä kaupungissa, kun saavut perille. Jos et onnistu parantamaan itseäsi ennen kuin saavut viimeiseen maahan, KUOLET.
 
 Ole tarkkana — matkasi varrella saattaa tapahtua yllätyksiä!
+
+
+https://github.com/reettkaj/m3615virus.git
