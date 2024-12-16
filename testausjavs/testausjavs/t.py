@@ -61,7 +61,7 @@ def get_leaderboard():
     except Error as e:
         return jsonify({"error": str(e)}), 500
 
-# API Endpoint to get events 
+# API Endpoint for events 
 @app.route('/events', methods=['GET'])
 def get_events():
     """Fetch all events from the database."""
@@ -80,7 +80,7 @@ def get_events():
     finally:
         cursor.close()
         connection.close()
-# API Endpoint to get etasks
+# API Endpoint for tasks
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
     """Fetch all tasks from the database."""
@@ -99,7 +99,7 @@ def get_tasks():
     finally:
         cursor.close()
         connection.close()
-# Update leaderboard (post game result)
+# leaderboard update
 @app.route('/update_leaderboard', methods=['POST'])
 def update_leaderboard():
     try:
@@ -124,7 +124,6 @@ def update_leaderboard():
         return jsonify({"message": "Leaderboard updated successfully!"}), 200
 
     except Exception as e:
-        # Handle generic errors
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
